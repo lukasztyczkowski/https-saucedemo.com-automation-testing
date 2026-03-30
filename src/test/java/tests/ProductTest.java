@@ -8,7 +8,7 @@ import pages.ProductPage;
 
 public class ProductTest extends BaseTest {
     @Test
-    public void ProductTest(){
+    public void shouldProductAddSuccessfully(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user","secret_sauce");
 
