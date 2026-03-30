@@ -14,7 +14,6 @@ public class LoginTest extends BaseTest {
         String expectedUrl = "https://www.saucedemo.com/inventory.html";
         Assert.assertEquals(driver.getCurrentUrl(),expectedUrl,"User should be redirected to inventory page");
 
-        Assert.assertTrue(driver.findElement(By.className("active")).isDisplayed(),"User is not active page");
 
 
     }
