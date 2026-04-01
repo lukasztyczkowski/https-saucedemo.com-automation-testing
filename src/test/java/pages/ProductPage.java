@@ -12,7 +12,9 @@ public class ProductPage {
 
     private By firstProductButton=By.id("add-to-cart-sauce-labs-backpack");
     private By secondProductButton=By.id("add-to-cart-sauce-labs-bike-light");
+    private By thirdProductButton =By.id("add-to-cart-sauce-labs-bolt-t-shirt");
     private By cartButton = By.className("shopping_cart_link");
+
 
 
     public ProductPage(WebDriver driver) {
@@ -27,9 +29,19 @@ public class ProductPage {
         new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.findElement(secondProductButton).click();
     }
-    public boolean isProductInCart(int expectedCaount){
+    public void clickThirdProductButton(){
+        new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.findElement(thirdProductButton).click();
+    }
+
+
+
+
+
+    public boolean isCartBadgeEqual(int expectedCount){
+
         String count = driver.findElement(cartButton).getText();
-        return Integer.parseInt(count) == expectedCaount;
+        return Integer.parseInt(count) == expectedCount;
     }
 
     public void openCart() {

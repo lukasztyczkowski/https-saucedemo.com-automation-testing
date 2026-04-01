@@ -20,6 +20,7 @@ public class CheckOutPage {
     private By continiueButton = By.id("continue");
     private By finishButton = By.id("finish");
     private By succcessMessage = By.id("success-message");
+    private By errorMessage = By.cssSelector("[data-test='error']");
 
 
     public void enterUserData(String name , String surname, String coede) {
@@ -50,4 +51,8 @@ public class CheckOutPage {
     public boolean isCheckoutComplete() {
         return driver.findElement(cartButton).isDisplayed();
     }
+    public boolean isErrorDisplayed() {
+        return driver.findElement(errorMessage).isDisplayed();
+    }
 }
+
