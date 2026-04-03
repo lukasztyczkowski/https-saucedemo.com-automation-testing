@@ -3,10 +3,7 @@ package tests;
 import base.Base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.CheckOutPage;
-import pages.LoginPage;
-import pages.ProductPage;
+import pages.*;
 
 public class CheckoutTest extends BaseTest {
 	@Test
@@ -31,12 +28,21 @@ public class CheckoutTest extends BaseTest {
         checkOutPage.clickContinueButton();
         Assert.assertTrue(driver.getCurrentUrl().contains("checkout-step-two.html"),
                 "User should be on checkout summary page" );
-        checkOutPage.clickFinishButton();
 
-        Assert.assertTrue(
+                Assert.assertTrue(
                 checkOutPage.isCheckoutComplete(),
                 "Checkout should be completed successfully"
         );
+
+
+        checkOutPage.clickFinishButton();
+        CompletePage completePage = new CompletePage(driver);
+        completePage.clickBackToHomeButton();
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("saucedemo.com/inventory.html"),
+                "Back to homepage page");
+
+
 
 
     }
