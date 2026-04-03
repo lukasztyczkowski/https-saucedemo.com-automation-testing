@@ -7,19 +7,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProductPage {
+public class ProductPage extends CartPage {
     private WebDriver driver;
 
     private By firstProductButton=By.id("add-to-cart-sauce-labs-backpack");
     private By secondProductButton=By.id("add-to-cart-sauce-labs-bike-light");
     private By thirdProductButton =By.id("add-to-cart-sauce-labs-bolt-t-shirt");
-    private By cartButton = By.className("shopping_cart_link");
-
-
+    private By removeFirstFromCartButton = By.id("remove-sauce-labs-backpack");
+    private By cartBadge = By.className("shopping_cart_link");
 
     public ProductPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
+
+
+
+
 
     public void clickFirstProductButton(){
         new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -33,21 +37,26 @@ public class ProductPage {
         new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.findElement(thirdProductButton).click();
     }
-
-
-
-
-
-    public boolean isCartBadgeEqual(int expectedCount){
-
-        String count = driver.findElement(cartButton).getText();
-        return Integer.parseInt(count) == expectedCount;
+    public void clickRemoveFirstFromCartButton(){
+        new WebDriverWait(driver, Duration.ofSeconds(10));
+        driver.findElement(removeFirstFromCartButton).click();
     }
 
     public void openCart() {
-        driver.findElement(cartButton).click();
+        driver.findElement(cartBadge).click();
 
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.urlContains("cart"));
     }
+
+    public boolean isCartBadgeEqual(int expectedCount){
+
+        String count = driver.findElement(cartBadge).getText();
+        return Integer.parseInt(count) == expectedCount;
+    }
+    public boolean isCartBadgeVisible() {
+        return driver.findElement(cartBadge).isDisplayed();
+    }
+
+
 }

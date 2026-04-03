@@ -1,7 +1,6 @@
 package tests;
 
 import base.Base.BaseTest;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -88,6 +87,29 @@ public class LoginTest extends BaseTest {
                 loginPage.isErrorDisplayed(),
                 "Error message should be visible"
         );
+    }
+    @Test
+    public void shouldNotLoginWithLockedUsername() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("locked_out_user","secret_sauce");
+
+
+        Assert.assertTrue(
+                loginPage.isErrorDisplayed(),
+                "Error message should be visible"
+        );
+
+
+        Assert.assertEquals(loginPage.getErrorMessage(),
+                "Epic sadface: Sorry, this user has been locked out.",
+                "Proper error message should be displayed");
+
+        Assert.assertTrue(
+                loginPage.isLoginPageOpened(),
+                "User should stay on login page");
+
+
+
     }
 
 }

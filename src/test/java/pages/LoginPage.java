@@ -32,4 +32,10 @@ public class LoginPage {
     public boolean isErrorDisplayed() {
         return driver.findElement(errorMessage).isDisplayed();
     }
+    public boolean isLoginPageOpened() {
+        return driver.getCurrentUrl().equals("https://www.saucedemo.com/");
+    }
+    public String getErrorMessage() {
+        return driver.findElement(errorMessage).getText();
+    }
 }
