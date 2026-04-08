@@ -65,7 +65,7 @@ public class LoginTest extends BaseTest {
         loginPage.login("standard_user","");
 
         Assert.assertTrue(
-                driver.getCurrentUrl().contains("https://www.saucedemo.com/"),
+                loginPage.waitForUrlToContain("saucedemo.com"),
                 "User should stay on login page"
         );
         Assert.assertTrue(
@@ -80,7 +80,7 @@ public class LoginTest extends BaseTest {
         loginPage.login("","secret_sauce");
 
         Assert.assertTrue(
-                driver.getCurrentUrl().contains("https://www.saucedemo.com/"),
+                loginPage.waitForUrlToContain("saucedemo.com"),
                 "User should stay on login page"
         );
         Assert.assertTrue(
@@ -94,7 +94,7 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("wrong_username","secret_sauce");
         Assert.assertTrue(
-                driver.getCurrentUrl().contains("saucedemo.com"),
+                loginPage.waitForUrlToContain("saucedemo.com"),
                 "User should stay on login page"
         );
         Assert.assertTrue(
@@ -109,7 +109,7 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user", "wrong_password");
         Assert.assertTrue(
-                driver.getCurrentUrl().contains("saucedemo.com"),
+                loginPage.waitForUrlToContain("saucedemo.com"),
                 "User should stay on login page"
         );
         Assert.assertTrue(

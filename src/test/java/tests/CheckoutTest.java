@@ -16,7 +16,8 @@ public class CheckoutTest extends BaseTest {
                 "Cart badge sholud show 1 product");
 
         productPage.openCart();
-        Assert.assertTrue(driver.getCurrentUrl().contains("cart.html"));
+        Assert.assertTrue(productPage.waitForUrlToContain("cart.html")
+                , "Should be on cart page");
         CartPage cartPage = new CartPage(driver);
         Assert.assertTrue(cartPage.isProductInCart(1)
                 , "Cart in cart sholud show 1 product");
@@ -25,7 +26,7 @@ public class CheckoutTest extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.enterUserData("Jan","Kot","80-250");
         checkOutPage.clickContinueButton();
-        Assert.assertTrue(driver.getCurrentUrl().contains("checkout-step-two.html"),
+        Assert.assertTrue(cartPage.waitForUrlToContain("checkout-step-two.html"),
                 "User should be on checkout summary page" );
 
                 Assert.assertTrue(
@@ -57,7 +58,7 @@ public class CheckoutTest extends BaseTest {
                 ,"Cart badge should show 2 products"
         );
         productPage.openCart();
-        Assert.assertTrue(driver.getCurrentUrl().contains("cart.html"));
+        Assert.assertTrue(productPage.waitForUrlToContain("cart.html"));
         CartPage cartPage = new CartPage(driver);
         Assert.assertTrue(cartPage.isProductInCart(2)
                 , "Two products should be in the cart");
@@ -66,7 +67,7 @@ public class CheckoutTest extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.enterUserData("Jan","Kot","80-250");
         checkOutPage.clickContinueButton();
-        Assert.assertTrue(driver.getCurrentUrl().contains("checkout-step-two.html"),
+        Assert.assertTrue(checkOutPage.waitForUrlToContain("checkout-step-two.html"),
                 "User should be on checkout summary page");
         checkOutPage.clickFinishButton();
 
@@ -88,7 +89,7 @@ public class CheckoutTest extends BaseTest {
                 , "Cart badge should show 3 products");
 
         productPage.openCart();
-        Assert.assertTrue(driver.getCurrentUrl().contains("cart.html"));
+        Assert.assertTrue(productPage.waitForUrlToContain("cart.html"));
         CartPage cartPage = new CartPage(driver);
         Assert.assertTrue(cartPage.isProductInCart(3)
                 , "Three products should be in the cart");
@@ -97,7 +98,7 @@ public class CheckoutTest extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.enterUserData("Jan","Kot","80-250");
         checkOutPage.clickContinueButton();
-        Assert.assertTrue(driver.getCurrentUrl().contains("checkout-step-two.html"),
+        Assert.assertTrue(cartPage.waitForUrlToContain("checkout-step-two.html"),
                 "User should be on checkout summary page");
         checkOutPage.clickFinishButton();
 
@@ -117,7 +118,7 @@ public class CheckoutTest extends BaseTest {
                 "Cart badge should show 1 product");
 
         productPage.openCart();
-        Assert.assertTrue(driver.getCurrentUrl().contains("cart.html"));
+        Assert.assertTrue(productPage.waitForUrlToContain("cart.html"));
         CartPage cartPage = new CartPage(driver);
         Assert.assertTrue(cartPage.isProductInCart(1)
                 , "Cart should be in the cart");
@@ -126,7 +127,7 @@ public class CheckoutTest extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.enterUserData("","Kot","80-250");
         checkOutPage.clickContinueButton();
-        Assert.assertTrue(driver.getCurrentUrl().contains("checkout-step-one.html"),
+        Assert.assertTrue(cartPage.waitForUrlToContain("checkout-step-one.html"),
                 "User should be on Checkout page");
 
         Assert.assertTrue(
@@ -145,7 +146,7 @@ public class CheckoutTest extends BaseTest {
                 "Cart badge should show 1 product");
 
         productPage.openCart();
-        Assert.assertTrue(driver.getCurrentUrl().contains("cart.html"));
+        Assert.assertTrue(productPage.waitForUrlToContain("cart.html"));
         CartPage cartPage = new CartPage(driver);
         Assert.assertTrue(cartPage.isProductInCart(1),
                 "Cart should be in the cart");
@@ -154,7 +155,7 @@ public class CheckoutTest extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.enterUserData("Jan","","80-250");
         checkOutPage.clickContinueButton();
-        Assert.assertTrue(driver.getCurrentUrl().contains("checkout-step-one.html"),
+        Assert.assertTrue(cartPage.waitForUrlToContain("checkout-step-one.html"),
                 "User should be on Checkout page");
 
         Assert.assertTrue(
@@ -174,7 +175,7 @@ public class CheckoutTest extends BaseTest {
                 "Cart badge should show 1 product");
 
         productPage.openCart();
-        Assert.assertTrue(driver.getCurrentUrl().contains("cart.html"));
+        Assert.assertTrue(productPage.waitForUrlToContain("cart.html"));
         CartPage cartPage = new CartPage(driver);
         Assert.assertTrue(cartPage.isProductInCart(1),
                 "Cart should be in the cart");
@@ -183,7 +184,7 @@ public class CheckoutTest extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.enterUserData("Jan","Kot","");
         checkOutPage.clickContinueButton();
-        Assert.assertTrue(driver.getCurrentUrl().contains("checkout-step-one.html"),
+        Assert.assertTrue(checkOutPage.waitForUrlToContain("checkout-step-one.html"),
                 "User should be on Checkout page");
 
         Assert.assertTrue(
@@ -202,7 +203,7 @@ public class CheckoutTest extends BaseTest {
                 "Cart badge should show 1 product");
 
         productPage.openCart();
-        Assert.assertTrue(driver.getCurrentUrl().contains("cart.html"));
+        Assert.assertTrue(productPage.waitForUrlToContain("cart.html"));
         CartPage cartPage = new CartPage(driver);
         Assert.assertTrue(cartPage.isProductInCart(1),
                 "Cart should be in the cart");
@@ -211,7 +212,7 @@ public class CheckoutTest extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.enterUserData("","","");
         checkOutPage.clickContinueButton();
-        Assert.assertTrue(driver.getCurrentUrl().contains("checkout-step-one.html"),
+        Assert.assertTrue(checkOutPage.waitForUrlToContain("checkout-step-one.html"),
                 "User should be on Checkout page");
 
         Assert.assertTrue(

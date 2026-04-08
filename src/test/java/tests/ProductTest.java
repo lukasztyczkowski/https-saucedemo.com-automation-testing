@@ -74,9 +74,8 @@ public class ProductTest extends BaseTest  {
         CartPage cartPage = new CartPage(driver);
         cartPage.clickRemoveFirstFromCartButton();
         cartPage.clickContinueShoppingButton();
-        String expectedUrl = "https://www.saucedemo.com/inventory.html";
 
-        Assert.assertEquals(driver.getCurrentUrl(),expectedUrl,
+        Assert.assertTrue(cartPage.waitForUrlToContain("https://www.saucedemo.com/inventory.html"),
                 "User should be redirected to inventory page");
 
 
@@ -101,10 +100,12 @@ public class ProductTest extends BaseTest  {
                 "Cart badge should show 1 product");
 
         cartPage.clickContinueShoppingButton();
-        String expectedUrl = "https://www.saucedemo.com/inventory.html";
 
-        Assert.assertEquals(driver.getCurrentUrl(),expectedUrl,
+        Assert.assertTrue(cartPage.waitForUrlToContain("https://www.saucedemo.com/inventory.html"),
                 "User should be redirected to inventory page");
+
+
+
     }
     @Test
     public void addTwoProductsSuccessfullyAndRemoveSecondProduct(){
@@ -133,9 +134,9 @@ public class ProductTest extends BaseTest  {
         ProductPage productPage = new ProductPage(driver);
         productPage.openCart();
         CartPage cartPage = new CartPage(driver);
-        String expectedUrl = "https://www.saucedemo.com/cart.html";
-        Assert.assertEquals(driver.getCurrentUrl(),expectedUrl,
-                "User should be redirected to cart page");
+        Assert.assertTrue(cartPage.waitForUrlToContain("https://www.saucedemo.com/cart.html"),
+                "User should be redirected to inventory page");
+
 
         Assert.assertTrue(
                 cartPage.isCartPageOpened(),
