@@ -15,6 +15,8 @@ public class ProductPage extends BasePage {
     private By thirdProductButton =By.id("add-to-cart-sauce-labs-bolt-t-shirt");
     private By removeFirstFromCartButton = By.id("remove-sauce-labs-backpack");
     private By cartBadge = By.className("shopping_cart_link");
+    private By MenuButton = By.id("react-burger-menu-btn");
+    private By LogoutButton = By.id("logout_sidebar_link");
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -40,6 +42,12 @@ public class ProductPage extends BasePage {
     public void clickRemoveFirstFromCartButton(){
         wait.until(ExpectedConditions.elementToBeClickable(removeFirstFromCartButton)).click();
 
+    }
+    public void clickMenuButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(MenuButton)).click();
+    }
+    public void clickLogoutButton() {
+        wait.until(ExpectedConditions.elementToBeClickable(LogoutButton)).click();
     }
 
     public void openCart() {

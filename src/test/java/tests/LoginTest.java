@@ -1,11 +1,11 @@
 package tests;
 
-import base.Base.BaseTest;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import pages.ProductPage;
 
 import java.time.Duration;
 
@@ -19,6 +19,24 @@ public class LoginTest extends BaseTest {
 
 
         Assert.assertTrue(isUrsCorrect,"User should be redirected to inventory page");
+
+    }
+    @Test
+    public void shouldLoginSuccessfullyAndLogOut(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user","secret_sauce");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Boolean isUrlCorrect
+                = wait.until(ExpectedConditions.urlContains("https://www.saucedemo.com/inventory.html"));
+        Assert.assertTrue(isUrlCorrect,"User should be redirected to inventory page");
+        ProductPage productPage = new ProductPage(driver);
+        productPage.clickMenuButton();
+        productPage.clickLogoutButton();
+
+        Assert.assertTrue(
+                loginPage.waitForUrlToContain("saucedemo.com"),
+                "User should be redirected back to login page"
+        );
 
     }
 

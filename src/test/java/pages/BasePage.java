@@ -19,9 +19,13 @@ public class BasePage {
     }
     protected void click(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-
-
-
+    }
+    public boolean waitForUrlToContain(String expectedUrl) {
+        try {
+            return  wait.until(ExpectedConditions.urlContains(expectedUrl));
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
 
