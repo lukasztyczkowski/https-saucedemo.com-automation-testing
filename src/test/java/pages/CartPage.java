@@ -9,15 +9,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class CartPage  {
-    private WebDriver driver;
+public class CartPage extends BasePage  {
+
     private By checkoutButton = By.id("checkout");
     private By removeFirstFromCartButton = By.id("remove-sauce-labs-backpack");
     private By removeSecondFromCartButton = By.id("remove-sauce-labs-bike-light");
     private By continiueShoppingButton = By.id("continue-shopping");
     private By thankYouMessage = By.className("complete-header");
+
+
     public CartPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+
     }
 
 

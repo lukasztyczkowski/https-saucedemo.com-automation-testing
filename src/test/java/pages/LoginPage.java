@@ -1,10 +1,12 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class LoginPage {
-    private WebDriver driver;
+public class LoginPage extends BasePage {
+
 
     private By usernameInput = By.id("user-name");
     private By passwordInput = By.id("password");
@@ -12,16 +14,17 @@ public class LoginPage {
     private By errorMessage = By.cssSelector("[data-test='error']");
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+
     }
     public void  enterUsername(String username){
-        driver.findElement(usernameInput).sendKeys(username);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInput)).sendKeys(username);
     }
     public void  enterPassword(String password){
-        driver.findElement(passwordInput).sendKeys(password);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInput)).sendKeys(password);
     }
     public void  clickLoginButton(){
-        driver.findElement(loginButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton)).click();
     }
     public void login(String username, String password){
         enterUsername(username);
@@ -30,7 +33,11 @@ public class LoginPage {
     }
 
     public boolean isErrorDisplayed() {
-        return driver.findElement(errorMessage).isDisplayed();
+        try {
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage)).isDisplayed();
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
     public boolean isLoginPageOpened() {
         return driver.getCurrentUrl().equals("https://www.saucedemo.com/");

@@ -7,11 +7,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class CheckOutPage {
-    private WebDriver driver;
+public class CheckOutPage extends BasePage {
+
 
     public  CheckOutPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+
     }
 
     private By firstName = By.id("first-name");

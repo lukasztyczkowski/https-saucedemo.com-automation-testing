@@ -153,7 +153,7 @@ public class ProductTest extends BaseTest  {
         productPage.clickRemoveFirstFromCartButton();
 
         Assert.assertTrue(productPage.isCartBadgeVisible(),
-                "Cart badge should show 0 product");
+                "Cart badge should not be visible when cart is empty");
 
 
     }

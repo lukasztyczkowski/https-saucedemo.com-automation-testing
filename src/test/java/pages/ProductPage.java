@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProductPage extends CartPage {
-    private WebDriver driver;
+public class ProductPage extends BasePage {
+
 
     private By firstProductButton=By.id("add-to-cart-sauce-labs-backpack");
     private By secondProductButton=By.id("add-to-cart-sauce-labs-bike-light");
@@ -18,7 +18,7 @@ public class ProductPage extends CartPage {
 
     public ProductPage(WebDriver driver) {
         super(driver);
-        this.driver = driver;
+
     }
 
 
@@ -26,20 +26,20 @@ public class ProductPage extends CartPage {
 
 
     public void clickFirstProductButton(){
-        new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.findElement(firstProductButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(firstProductButton)).click();
+
     }
     public void clickSecondProductButton(){
-        new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.findElement(secondProductButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(secondProductButton)).click();
+
     }
     public void clickThirdProductButton(){
-        new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.findElement(thirdProductButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(thirdProductButton)).click();
+
     }
     public void clickRemoveFirstFromCartButton(){
-        new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.findElement(removeFirstFromCartButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(removeFirstFromCartButton)).click();
+
     }
 
     public void openCart() {
