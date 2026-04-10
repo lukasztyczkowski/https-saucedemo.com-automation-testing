@@ -22,6 +22,7 @@ public class CheckOutPage extends BasePage {
     private By finishButton = By.id("finish");
     private By succcessMessage = By.id("success-message");
     private By errorMessage = By.cssSelector("[data-test='error']");
+    private By homeButton = By.id("back-to-products");
 
 
     public void enterUserData(String name , String surname, String coede) {
@@ -54,6 +55,9 @@ public class CheckOutPage extends BasePage {
     }
     public boolean isErrorDisplayed() {
         return driver.findElement(errorMessage).isDisplayed();
+    }
+    public void clickHomeButton() {
+        driver.findElement(homeButton).click();
     }
 }
 

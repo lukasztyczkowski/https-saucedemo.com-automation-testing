@@ -108,6 +108,37 @@ public class CheckoutTest extends BaseTest {
         );
     }
     @Test
+    public void shouldFinishCheckoutSuccessfullyAndLogout(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user","secret_sauce");
+        ProductPage productPage = new ProductPage(driver);
+        productPage.clickFirstProductButton();
+        Assert.assertTrue(productPage.isCartBadgeEqual(1),
+                "Cart badge should show 1 product");
+        productPage.openCart();
+        Assert.assertTrue(productPage.waitForUrlToContain("cart.html"));
+        CartPage cartPage = new CartPage(driver);
+        Assert.assertTrue(cartPage.isProductInCart(1),
+                "One product should be in the cart");
+        cartPage.clickCheckout();
+        CheckOutPage checkOutPage = new CheckOutPage(driver);
+        checkOutPage.enterUserData("Jan","Kot","80-250");
+        checkOutPage.clickContinueButton();
+        Assert.assertTrue(cartPage.waitForUrlToContain("checkout-step-two.html"),
+                "User should be on checkout summary page");
+        checkOutPage.clickFinishButton();
+        Assert.assertTrue(
+                checkOutPage.isCheckoutComplete(),
+                "Checkout should be completed successfully"
+        );
+        CompletePage completePage = new CompletePage(driver);
+        completePage.clickBackToHomeButton();
+        Assert.assertTrue(completePage.waitForUrlToContain("https://www.saucedemo.com/")
+                , "Back to homepage should be on home page"
+        );
+
+    }
+    @Test
     public void shouldCheckoutSuccessfullyWitchWithoutUserName(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user","secret_sauce");
