@@ -10,13 +10,16 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     protected WebDriver driver;
+    protected static final String BaseURL = "https://saucedemo.com";
+    @BeforeMethod
+    public void beforeMethod() {}
 
     @BeforeMethod
     public void setUp()
     {
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
-        driver.get("https://saucedemo.com");
+        driver.get(BaseURL);
     }
     @AfterMethod
     public void tearDown() {
