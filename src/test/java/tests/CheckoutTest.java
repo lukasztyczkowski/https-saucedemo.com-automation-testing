@@ -10,7 +10,7 @@ public class CheckoutTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user","secret_sauce");
         ProductPage productPage = new ProductPage(driver);
-        productPage.clickFirstProductButton();
+        productPage.addFirstProductToCart();
 
         Assert.assertTrue(productPage.isCartBadgeEqual(1),
                 "Cart badge sholud show 1 product");
@@ -52,8 +52,8 @@ public class CheckoutTest extends BaseTest {
         loginPage.login("standard_user","secret_sauce");
 
         ProductPage productPage = new ProductPage(driver);
-        productPage.clickFirstProductButton();
-        productPage.clickSecondProductButton();
+        productPage.addFirstProductToCart();
+        productPage.addSecondProductToCart();
         Assert.assertTrue(productPage.isCartBadgeEqual(2)
                 ,"Cart badge should show 2 products"
         );
@@ -82,9 +82,9 @@ public class CheckoutTest extends BaseTest {
         loginPage.login("standard_user","secret_sauce");
 
         ProductPage productPage = new ProductPage(driver);
-        productPage.clickFirstProductButton();
-        productPage.clickSecondProductButton();
-        productPage.clickThirdProductButton();
+        productPage.addFirstProductToCart();
+        productPage.addSecondProductToCart();
+        productPage.addTrhirdProductToCart();
         Assert.assertTrue(productPage.isCartBadgeEqual(3)
                 , "Cart badge should show 3 products");
 
@@ -111,8 +111,10 @@ public class CheckoutTest extends BaseTest {
     public void shouldFinishCheckoutSuccessfullyAndLogout(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user","secret_sauce");
+
         ProductPage productPage = new ProductPage(driver);
-        productPage.clickFirstProductButton();
+        productPage.addFirstProductToCart();
+
         Assert.assertTrue(productPage.isCartBadgeEqual(1),
                 "Cart badge should show 1 product");
         productPage.openCart();
@@ -144,7 +146,7 @@ public class CheckoutTest extends BaseTest {
         loginPage.login("standard_user","secret_sauce");
 
         ProductPage productPage = new ProductPage(driver);
-        productPage.clickFirstProductButton();
+        productPage.addFirstProductToCart();
         Assert.assertTrue(productPage.isCartBadgeEqual(1),
                 "Cart badge should show 1 product");
 
@@ -172,7 +174,7 @@ public class CheckoutTest extends BaseTest {
         loginPage.login("standard_user","secret_sauce");
 
         ProductPage productPage = new ProductPage(driver);
-        productPage.clickFirstProductButton();
+        productPage.addFirstProductToCart();
         Assert.assertTrue(productPage.isCartBadgeEqual(1),
                 "Cart badge should show 1 product");
 
@@ -201,7 +203,7 @@ public class CheckoutTest extends BaseTest {
         loginPage.login("standard_user","secret_sauce");
 
         ProductPage productPage = new ProductPage(driver);
-        productPage.clickFirstProductButton();
+        productPage.addFirstProductToCart();
         Assert.assertTrue(productPage.isCartBadgeEqual(1),
                 "Cart badge should show 1 product");
 
@@ -228,7 +230,7 @@ public class CheckoutTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user","secret_sauce");
         ProductPage productPage = new ProductPage(driver);
-        productPage.clickFirstProductButton();
+        productPage.addFirstProductToCart();
 
         Assert.assertTrue(productPage.isCartBadgeEqual(1),
                 "Cart badge should show 1 product");

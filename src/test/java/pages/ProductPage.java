@@ -27,15 +27,15 @@ public class ProductPage extends BasePage {
 
 
 
-    public void clickFirstProductButton(){
+    public void addFirstProductToCart(){
         wait.until(ExpectedConditions.elementToBeClickable(firstProductButton)).click();
 
     }
-    public void clickSecondProductButton(){
+    public void addSecondProductToCart(){
         wait.until(ExpectedConditions.elementToBeClickable(secondProductButton)).click();
 
     }
-    public void clickThirdProductButton(){
+    public void addTrhirdProductToCart(){
         wait.until(ExpectedConditions.elementToBeClickable(thirdProductButton)).click();
 
     }
