@@ -112,6 +112,6 @@ Projekt wykorzystuje:
 
 ---
 
-## Autor
+
 
 Projekt wykonany w celach edukacyjnych i rozwoju umiejętności QA Automation.
